@@ -1,14 +1,21 @@
 <?php namespace Tsmith86\Twilio;
 
+define("DS", DIRECTORY_SEPARATOR );
+
+
+require_once  base_path(). DS. "vendor".DS."twilio".DS."sdk".DS."Services".DS."Twilio.php";
+
+use Services_Twilio;
+
 class Wrapper 
 {	
-	$twilio;
+	public $twilio;
 
 	 function __construct ($account_id, $auth_token)
 	 {
 		
-		require_once '../../../vendor/twilio/Services/Twilio/Twilio.php'
-
-	 	$this->twilio = new Services_Twilio($account_sid, $auth_token);
+	 	$this->twilio = new Services_Twilio($account_id, $auth_token);
+	 	$this->account = $this->twilio->account;
+	 	return $this->twilio;
 	 }
 }
